@@ -8,6 +8,8 @@ app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.urlencoded( {extended: true }));
 app.use(bodyParser.json());
 
+
+
 /////////////////////////////////////////////////////////////
 /////////////////////// GET REQUESTS ///////////////////////
 ////////////////////////////////////////////////////////////
@@ -88,32 +90,32 @@ app.get('/api/tags', (request, response) => {
 /////////////////////// POST REQUESTS ///////////////////////
 /////////////////////////////////////////////////////////////
 
-// Adds a recipe, desired tags, thumbnail url, and photos to the database
-app.post('/api/recipes', (request, response) => {
-  var userTags = [];
-  request.body.Tags.forEach(tag => userTags.push(tag));
+// // Adds a recipe, desired tags, thumbnail url, and photos to the database
+// app.post('/api/recipes', (request, response) => {
+//   var userTags = [];
+//   request.body.Tags.forEach(tag => userTags.push(tag));
 
-  var photoUrls = [];
-  request.body.Photos.forEach(url => photoUrls.push(url));
+//   var photoUrls = [];
+//   request.body.Photos.forEach(url => photoUrls.push(url));
 
-  //UPDATE THIS TO HANDLE USERNAME
-  db.Recipe.create({
-    title: request.body.title,
-    imageUrl: request.body.imageUrl,
-    Photos: photoUrls,
-    Tags: userTags
-  }, {
-    include: [ db.Tag, db.Photo ]  //UPDATE THIS TO HANDLE USERNAME
-  })
-  .then((recipeData) => {
-    console.log('Server POST Recipe success');
-    response.send(recipeData);
-  })
-  .catch((error) => {
-    console.log('Server POST Recipe error');
-    response.send(error);
-  });
-});
+//   //UPDATE THIS TO HANDLE USERNAME
+//   db.Recipe.create({
+//     title: request.body.title,
+//     imageUrl: request.body.imageUrl,
+//     Photos: photoUrls,
+//     Tags: userTags
+//   }, {
+//     include: [ db.Tag, db.Photo ]  //UPDATE THIS TO HANDLE USERNAME
+//   })
+//   .then((recipeData) => {
+//     console.log('Server POST Recipe success');
+//     response.send(recipeData);
+//   })
+//   .catch((error) => {
+//     console.log('Server POST Recipe error');
+//     response.send(error);
+//   });
+// });
 
 ///////////////////////////////////////////////////////////////
 /////////////////////// OTHER REQUESTS ///////////////////////

@@ -4,11 +4,13 @@ angular.module('app')
   this.newRecipe = {};
 
   this.handlePhotoSubmit = () => {
-    var el = angular.element(document.querySelector("#imageUploads"))[0].files[0];
-    console.log("el", el);
-    var x = angular.element(document.getElementsByName("yolo"))[0].value;
-    this.newRecipe["tags"] = x.split(",");
-    console.log(this.newRecipe);
+    var addedPhotos = angular.element(document.querySelector("#imageUploads"))[0].files;
+    //console.log("addedPhotos", addedPhotos[0].name);  //(an obj={i:{name:xx, time:xx}})
+    var addedTags = angular.element(document.getElementsByName("yolo"))[0].value;
+    this.newRecipe["Tags"] = addedTags.split(",");
+    this.newRecipe["Photos"] = addedPhotos;
+    console.log("reqObj", this.newRecipe);
+    get.sendRecipe(this.newRecipe);
   };
 
 
