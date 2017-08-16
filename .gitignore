@@ -20,3 +20,4 @@ client/cloudinary/cloudinary.env
 
 # Notes #
 notes.txt
+.env
