@@ -16,9 +16,10 @@ angular.module('app')
     });
   }
 
-  get.sendRecipe = function (query) {
+  this.sendRecipe = function (query) {
     // --------------------FIX TO ADD USERNAME PARAMETER
     var {title, Photos, Tags} = query;
+    console.log("mememem", {title, Photos, Tags});
     axios.post('/api/recipe', {title, Photos, Tags})
     .then(function (res) {
       console.log(res);

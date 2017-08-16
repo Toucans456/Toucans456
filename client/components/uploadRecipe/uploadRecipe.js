@@ -5,7 +5,11 @@ angular.module('app')
 
   this.handlePhotoSubmit = () => {
     var addedPhotos = angular.element(document.querySelector("#imageUploads"))[0].files;
-    //console.log("addedPhotos", addedPhotos[0].name);  //(an obj={i:{name:xx, time:xx}})
+    console.log("addedPhotos", addedPhotos);  //(an obj={i:{name:xx, time:xx}})
+    // addedPhotos = Array.prototype.slice.call(addedPhotos);
+    //console.log(addedPhotos[0].name)  //[{}, {}, {}]
+
+
     var addedTags = angular.element(document.getElementsByName("yolo"))[0].value;
     this.newRecipe["Tags"] = addedTags.split(",");
     this.newRecipe["Photos"] = addedPhotos;
