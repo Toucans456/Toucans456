@@ -5,7 +5,7 @@ angular.module('app')
   templateUrl: 'client/components/app/app.html',
 })
 
-.controller ('RecipeController', function ($scope, get) {
+.controller ('RecipeController', ['$scope', 'get', '$state', function ($scope, get, $state) {
 
 ////////handle switch views via ng-if///////
   this.content = true;
@@ -15,7 +15,6 @@ angular.module('app')
   };
 
 ////////search bar//////////////////////////
-
   this.handleSearchResults = (query) => {
     get.search({query: query}, function(recipes){
       $scope.recipes = recipes
@@ -59,7 +58,11 @@ angular.module('app')
     $scope.$apply();
   });
 
+///////// log out ////////////////////////
+  this.logout = () => {
+    console.log('LOGOUT SPARKLE UNICORN!');
+    $state.go('tourist');
+  };
 
 
-
-});
+}]);

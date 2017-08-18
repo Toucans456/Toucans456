@@ -20,12 +20,6 @@ angular.module('app')
         $state.go('primary');
       });
     };
-
-    this.logout = () => {
-      console.log('LOGOUT SPARKLE UNICORN!');
-      $state.go('tourist');
-    };
-
   }])
   .component('tourist', {
 
