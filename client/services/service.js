@@ -77,6 +77,17 @@ angular.module('app')
     });
   }
 
+  this.signUp = (config, callback) => {
+    // post request to '/api/signup'
+    axios.post('/api/signup', config)
+    .then((token) => {
+      callback(token);
+    })
+    .catch((error) => {
+      alert('Sign Up Failed!')
+    });
+  }
+
   this.uploadFileToUrl = function(file, uploadUrl){
     var fd = new FormData();
     fd.append('title', file.Title);
@@ -99,6 +110,7 @@ angular.module('app')
       .then((primaryView) => {console.log('GETHOMEPAGE PRIMARYVIEW', primaryView);})
       .catch((error) => {});
   };
+
 
 });
 
